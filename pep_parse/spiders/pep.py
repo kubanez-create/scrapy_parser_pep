@@ -13,8 +13,8 @@ class PepSpider(scrapy.Spider):
             '//section[@id="numerical-index"]').css('tr')
         for row in table[1:]:
             item = PepParseItem()
-            item['Номер'] = int(row.css('td a::text').get())
-            item['Название'] = row.xpath('td[3]/a/text()').get()
+            item['number'] = int(row.css('td a::text').get())
+            item['name'] = row.xpath('td[3]/a/text()').get()
 
             yield response.follow(
                 row.xpath('td/a/@href').get(),
@@ -22,7 +22,7 @@ class PepSpider(scrapy.Spider):
                 cb_kwargs=dict(item=item))
 
     def parse_pep(self, response, item):
-        item['Статус'] = response.xpath(
+        item['status'] = response.xpath(
             '//dt[contains(., "Status")]/following-sibling::*/abbr/text()'
         ).get()
         return item

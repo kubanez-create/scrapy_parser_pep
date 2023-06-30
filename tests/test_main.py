@@ -14,6 +14,8 @@ except ModuleNotFoundError:
 
 def test_run_scrapy(monkeypatch, temp_dir):
     mock_base_dir = temp_dir
+    print(dir(pipelines))
+
     monkeypatch.setattr(pipelines, 'BASE_DIR', mock_base_dir)
 
     process = CrawlerProcess(settings={
