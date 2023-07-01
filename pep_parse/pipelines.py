@@ -9,11 +9,17 @@ DATETIME_FORMAT = '%Y-%m-%d_%H-%M-%S'
 
 
 class PepParsePipeline:
+    """Pipeline class for Python PEP parser."""
     def __init__(self):
         self.results_dir = BASE_DIR / 'results'
         self.results_dir.mkdir(exist_ok=True)
 
     def open_spider(self, spider):
+        """Create counter instance and file to write into.
+
+        Args:
+            spider (spider): spider class
+        """
         self.counter = Counter()
         filename = (self.results_dir / "status_summary_"
                     f"{dt.now().strftime(DATETIME_FORMAT)}.csv")
@@ -21,12 +27,26 @@ class PepParsePipeline:
         self.file.write('Статус,Количество\n')
 
     def close_spider(self, spider):
+        """Write collected statistics into the file and close it.
+
+        Args:
+            spider (spider): spider class
+        """
         for status, st_count in self.counter.items():
             self.file.write(f"{status},{st_count!s}\n")
         self.file.write(f"Total,{self.counter.total()}\n")
         self.file.close()
 
     def process_item(self, item, spider):
+        """Count each item's status.
+
+        Args:
+            item (Item): custom scrapy item class
+            spider (spider): spider class
+
+        Returns:
+            Item: custom scrapy item class
+        """
         adapter = ItemAdapter(item)
         status = adapter["status"]
         self.counter.update({f"{status}": 1})

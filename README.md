@@ -4,9 +4,7 @@ The PEP Pages Parser is a Python library for parsing and extracting information 
 
 ## Features
 
-- Gather brief summary for a "What's new in Python" page, including link to an article, its name and author(authors).
-- Retrieve the latest Python's versions metadata such as link, version and status.
-- Download the latest Python's versions documentation.
+- Retrieve each PEP's metadata such as number, author(s) and status.
 - Calculate the Python PEP's status statistics (how many PEPs do we have in each status).
 
 ## Installation
@@ -14,7 +12,7 @@ The PEP Pages Parser is a Python library for parsing and extracting information 
 You can install the PEP Pages Parser library using pip:
 
 ```shell
-git clone git@github.com:kubanez-create/bs4_parser_pep.git
+git clone git@github.com:kubanez-create/scrapy_parser_pep.git
 pip install -r requirements.txt
 ```
 
@@ -23,30 +21,9 @@ pip install -r requirements.txt
 Here's a simple example demonstrating how to use the PEP Pages Parser library:
 
 ```shell
-# Get help
-python main.py -h
-python main.py --help
-
-# Clear cache
-python main.py -c
-python main.py --clear-cache
-
-# To redirect program's output to a file use flag
-python main.py -o file
-python main.py --output file
-
-# To prettify program's output use flag
-python main.py -o pretty
-python main.py --output pretty
-
-# Get links for the latest Python news pages
-python main.py whats-new
-
-# Get a list of Python's versions
-python main.py latest-versions
-
-# Download documentation for the latest Python version
-python main.py download
+# Parse contents of Python PEP's page and
+# create two files: one for PEP's statistics and another for PEP's metadata
+scrapy crawl pep
 ```
 
 ## Contributing
