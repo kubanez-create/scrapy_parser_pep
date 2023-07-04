@@ -44,7 +44,6 @@ class PepParsePipeline:
                     for key, val in self.counter.items()
                 )
             )
-        with open(self.filename, "a", encoding="utf-8") as file:
             file.write(f"Total,{self.counter.total()}\n")
 
     def process_item(self, item, spider):
