@@ -1,6 +1,6 @@
 # PEP Pages Parser
 
-The PEP Pages Parser is a Python library for parsing and extracting information from Python Enhancement Proposal (PEP) pages. It provides a convenient way to access various details about PEPs programmatically.
+The PEP Pages Parser is a Python package for parsing and extracting information from Python Enhancement Proposal (PEP) pages. It provides a convenient way to access various details about PEPs programmatically.
 
 ## Features
 
@@ -9,16 +9,19 @@ The PEP Pages Parser is a Python library for parsing and extracting information 
 
 ## Installation
 
-You can install the PEP Pages Parser library using pip:
+You can install the PEP Pages Parser using pip:
 
 ```shell
 git clone git@github.com:kubanez-create/scrapy_parser_pep.git
+cd scrapy_parser_pep
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
 ## Usage
 
-Here's a simple example demonstrating how to use the PEP Pages Parser library:
+Here's an example demonstrating how to use the PEP Pages Parser library:
 
 ```shell
 # Parse contents of Python PEP's page and
